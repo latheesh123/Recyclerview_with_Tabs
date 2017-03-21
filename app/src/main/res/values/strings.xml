@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Week2</string>
+    <string name="runtime_permissions_txt">Enable the permission</string>
+</resources>

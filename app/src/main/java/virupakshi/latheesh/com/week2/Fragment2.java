@@ -68,7 +68,11 @@ public class Fragment2 extends android.support.v4.app.Fragment {
         seekBar=(SeekBar)v.findViewById(R.id.seekbar);
 
 
+
+
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
 
 
 
@@ -78,53 +82,65 @@ public class Fragment2 extends android.support.v4.app.Fragment {
 
 
 
-                Snackbar snackbar = Snackbar
-                        .make(getView(), "Enable The Permissions", Snackbar.LENGTH_LONG)
-                        .setAction("Ok", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Snackbar snackbar1 = Snackbar.make(getView(), "Message is restored!", Snackbar.LENGTH_SHORT);
-                                snackbar1.show();
-                            }
-                        });
-
-                snackbar.show();
 
 
 
-                final Class drawableClass = R.drawable.class;
-                final Field[] fields = drawableClass.getFields();
+
+    int hasPermission = ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.READ_CONTACTS);
 
 
-                final Random rand = new Random();
-                int rndInt = rand.nextInt(fields.length);
-                try {
-                    int resID = fields[rndInt].getInt(drawableClass);
-                    imageView.setImageResource(resID);
-                } catch (Exception e) {
-                    e.printStackTrace();
+    if (hasPermission == PackageManager.PERMISSION_GRANTED) {
+        //Do smthng
+
+
+
+
+                        final Class drawableClass = R.drawable.class;
+                        final Field[] fields = drawableClass.getFields();
+
+                        final Random rand = new Random();
+                        int rndInt = rand.nextInt(fields.length);
+                        try {
+                            int resID = fields[rndInt].getInt(drawableClass);
+                            imageView.setImageResource(resID);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+
                 }
 
 
 
 
+                if (hasPermission == PackageManager.PERMISSION_DENIED)
 
-                        // Show an explanation to the user *asynchronously* -- don't block
-                        // this thread waiting for the user's response! After the user
-                        // sees the explanation, try again to request the permission.
+                {
+                        Snackbar snackbar = Snackbar
+                                .make(getView(), "Enable The Permissions", Snackbar.LENGTH_LONG)
+                                .setAction("Ok", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+
+
+                                        ActivityCompat.requestPermissions(getActivity(),
+                                                new String[]{Manifest.permission.READ_CONTACTS},
+                                                MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+                                    }
+                                });
+
+                        snackbar.show();
+
+                }
+
 
                     }
 
             @Override
             public void onStartTrackingTouch(final SeekBar seekBar) {
-
-
-
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{Manifest.permission.READ_CONTACTS},
-                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-
-
 
 
 
@@ -149,28 +165,6 @@ public class Fragment2 extends android.support.v4.app.Fragment {
 
 
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-
-
-        if (grantResults.length > 0
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-
-
-
-
-            // permission was granted, yay! Do the
-            // contacts-related task you need to do.
-
-        } else {
-
-            Toast.makeText(getActivity(),"Permission Denied",Toast.LENGTH_LONG).show();
-            // permission denied, boo! Disable the
-            // functionality that depends on this permission.
-        }
-        return;
-    }
 
 
     }

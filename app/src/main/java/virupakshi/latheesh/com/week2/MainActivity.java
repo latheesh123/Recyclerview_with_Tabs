@@ -1,5 +1,6 @@
 package virupakshi.latheesh.com.week2;
 
+import android.content.pm.PackageManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
-public class MainActivity extends RuntimePermissionsActivity {
+public class MainActivity extends AppCompatActivity {
 
 
 
@@ -35,10 +36,43 @@ public class MainActivity extends RuntimePermissionsActivity {
 
     }
 
+
     @Override
-    public void onPermissionsGranted(int requestCode) {
-        Toast.makeText(this, "Permissions Received.", Toast.LENGTH_LONG).show();
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+
+
+
+switch (requestCode)
+{
+
+
+        case 20: {
+            // If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                // permission was granted, yay! Do the
+                // contacts-related task you need to do.
+
+            }
+
+            if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_DENIED)
+            {
+
+                // permission denied, boo! Disable the
+                // functionality that depends on this permission.
+            }
+            return;
+        }
+
+        // other 'case' lines to check for other
+        // permissions this app might request
     }
+
+    }
+
+
 
     private void addFragmentsToViewPager(ViewPager viewPager) {
         TabFragmentAdapter adapter = new TabFragmentAdapter(getSupportFragmentManager());

@@ -74,7 +74,7 @@ private EditText editText;
 
 
 
-            Toast.makeText(SecondActivity.this,editText.getText().toString(),Toast.LENGTH_LONG).show();
+            Toast.makeText(SecondActivity.this,editText.getText().toString(),Toast.LENGTH_SHORT).show();
 
                 onBackPressed();
 

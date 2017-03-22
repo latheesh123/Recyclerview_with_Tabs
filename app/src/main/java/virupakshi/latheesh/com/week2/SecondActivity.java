@@ -57,7 +57,7 @@ private EditText editText;
 
     editText=(EditText)findViewById(R.id.editText);
 
-           final String value=editText.getText().toString();
+            String value=editText.getText().toString();
 
 
 
@@ -74,8 +74,9 @@ private EditText editText;
 
 
 
-Toast.makeText(SecondActivity.this,value,Toast.LENGTH_LONG).show();
+            Toast.makeText(SecondActivity.this,editText.getText().toString(),Toast.LENGTH_LONG).show();
 
+                onBackPressed();
 
             }
         });

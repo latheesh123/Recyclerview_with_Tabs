@@ -82,17 +82,13 @@ public class Fragment2 extends android.support.v4.app.Fragment {
 
 
 
-
-
-
-
     int hasPermission = ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.READ_CONTACTS);
 
 
+
+
+
     if (hasPermission == PackageManager.PERMISSION_GRANTED) {
-        //Do smthng
-
-
 
 
                         final Class drawableClass = R.drawable.class;
@@ -106,8 +102,6 @@ public class Fragment2 extends android.support.v4.app.Fragment {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-
 
                 }
 
@@ -136,12 +130,12 @@ public class Fragment2 extends android.support.v4.app.Fragment {
 
                 }
 
+            }
 
-                    }
+
 
             @Override
             public void onStartTrackingTouch(final SeekBar seekBar) {
-
 
 
             }
@@ -153,18 +147,9 @@ public class Fragment2 extends android.support.v4.app.Fragment {
             }
         });
 
-
-
-
-
         return v;
 
-
     }
-
-
-
-
 
 
     }

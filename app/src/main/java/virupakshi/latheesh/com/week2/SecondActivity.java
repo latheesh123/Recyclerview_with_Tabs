@@ -1,6 +1,7 @@
 package virupakshi.latheesh.com.week2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +15,10 @@ public class SecondActivity extends AppCompatActivity {
 
     private TextView textView1;
     private TextView textView2;
-
+private ImageView imageView;
 
     private Button button;
-
+int image2;
 
 private EditText editText;
 
@@ -32,11 +33,16 @@ private EditText editText;
         setContentView(R.layout.activity_second);
 
 
-        Bundle extras = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
 
-        String text1=extras.getString("text1");
+        String text1=bundle.getString("text1");
 
-        String text2=extras.getString("text2");
+        String text2=bundle.getString("text2");
+
+        Bitmap bmp = (Bitmap) bundle.getParcelable("imagebitmap");
+
+
+
 
 
 
@@ -47,7 +53,9 @@ private EditText editText;
 
         textView2=(TextView)findViewById(R.id.text2);
 
-editText=(EditText)findViewById(R.id.editText);
+        imageView=(ImageView)findViewById(R.id.imageView);
+
+    editText=(EditText)findViewById(R.id.editText);
 
            final String value=editText.getText().toString();
 
@@ -56,12 +64,15 @@ editText=(EditText)findViewById(R.id.editText);
         textView1.setText(text1);
         textView2.setText(text2);
 
+        imageView.setImageBitmap(bmp);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                onBackPressed();
+
+
 
 Toast.makeText(SecondActivity.this,value,Toast.LENGTH_LONG).show();
 

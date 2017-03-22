@@ -28,9 +28,8 @@
         android:layout_marginTop="19dp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-android:src="@android:drawable/ic_input_add"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="22dp"
         android:id="@+id/imageView"
         android:layout_below="@+id/text1"

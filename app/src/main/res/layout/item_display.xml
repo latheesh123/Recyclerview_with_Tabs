@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
 android:src="@android:drawable/ic_input_add"
 
+                android:id="@+id/image1"
                 />
 
 

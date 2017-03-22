@@ -105,9 +105,6 @@ public class Fragment2 extends android.support.v4.app.Fragment {
 
                 }
 
-
-
-
                 if (hasPermission == PackageManager.PERMISSION_DENIED)
 
                 {

@@ -2,6 +2,7 @@ package virupakshi.latheesh.com.week2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +30,8 @@ public class FragmentAdapter extends RecyclerView.Adapter<FragmentAdapter.ViewHo
 
     private ArrayList<Model> mModals;
     private FragmentManager mFm;
-Context ctx;
+
+    Context ctx;
 
 
     public FragmentAdapter(Context context,ArrayList<Model> Modals){
@@ -60,8 +63,10 @@ Context ctx;
 
         Model model=mModals.get(position);
 
-        holder.mPhoneView.setText(model.getmPhoneNumber());
-        holder.mContactsNameView.setText(model.getmName());
+        holder.mPhoneView.setText(mModals.get(position).getName());
+        holder.mContactsNameView.setText(mModals.get(position).getVersion());
+        holder.imageView.setImageResource(mModals.get(position).getImage());
+
 
 
     }
@@ -80,12 +85,14 @@ Context ctx;
 
         TextView mContactsNameView;
         TextView mPhoneView;
+        ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             mContactsNameView = (TextView) itemView.findViewById(R.id.nameView);
             mPhoneView = (TextView) itemView.findViewById(R.id.phoneNumberView);
+            imageView=(ImageView)itemView.findViewById(R.id.image1);
 
             itemView.setOnClickListener(this);
 
@@ -104,12 +111,22 @@ Context ctx;
 
                 Context context = v.getContext();
 
+                imageView.buildDrawingCache();
+                Bitmap image= imageView.getDrawingCache();
+
                 Intent intent = new Intent(context, SecondActivity.class);
 
 
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("imagebitmap", image);
 
-                intent.putExtra("text1",model.getmName());
-                intent.putExtra("text2",model.getmPhoneNumber());
+                bundle.putString("text1",mModals.get(position).getName());
+                bundle.putString("text2",mModals.get(position).getVersion());
+                bundle.putInt("text3",mModals.get(position).getImage());
+
+
+                intent.putExtras(bundle);
+
                 context.startActivity(intent);
 
                 // We can access the data within the views
@@ -117,7 +134,19 @@ Context ctx;
             }
         }
     }
+    @Override
+    public int getItemViewType(int position) {
 
+
+
+
+       return position;
+
+
+
+
+
+    }
 
 
 }

@@ -6,28 +6,33 @@ package virupakshi.latheesh.com.week2;
 
 public class Model {
 
-    private String mName;
-    private String mPhoneNumber;
+    String name;
+    String version;
+    int id_;
+    int image;
 
-    public Model(String name,String phone){
-        mName = name;
-        mPhoneNumber = phone;
-
+    public Model(String name, String version, int id_, int image) {
+        this.name = name;
+        this.version = version;
+        this.id_ = id_;
+        this.image=image;
     }
 
-    public String getmName() {
-        return mName;
+
+    public String getName() {
+        return name;
     }
 
-    public void setmName(String mName) {
-        this.mName = mName;
+
+    public String getVersion() {
+        return version;
     }
 
-    public String getmPhoneNumber() {
-        return mPhoneNumber;
+    public int getImage() {
+        return image;
     }
 
-    public void setmPhoneNumber(String mPhoneNumber) {
-        this.mPhoneNumber = mPhoneNumber;
+    public int getId() {
+        return id_;
     }
 }

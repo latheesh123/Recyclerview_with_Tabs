@@ -23,6 +23,7 @@ public class Fragment1 extends android.support.v4.app.Fragment {
 
 
 
+
     public Fragment1()
     {
 
@@ -73,19 +74,20 @@ public class Fragment1 extends android.support.v4.app.Fragment {
 
 
     private ArrayList<Model> generateData(){
+
         ArrayList<Model> contactsModals = new ArrayList<>();
 
-        contactsModals.add(new Model("Midhun Vignesh S","987654321"));
-        contactsModals.add(new Model("Shivasurya S","987654321"));
-        contactsModals.add(new Model("Aswin Vayiravan","987654321"));
-        contactsModals.add(new Model("Muthu Alagappan M","987654321"));
-        contactsModals.add(new Model("SriramaMoorthy S","987654321"));
-        contactsModals.add(new Model("Puviyarasu V","987654321"));
-        contactsModals.add(new Model("Arun Kumar K R","987654321"));
-        contactsModals.add(new Model("Venkat Raman","987654321"));
-        contactsModals.add(new Model("Venkat Raman","987654321"));
+        for (int i = 0; i < Mydata.nameArray.length; i++) {
+            contactsModals.add(new Model(
+                    Mydata.nameArray[i],
+                    Mydata.versionArray[i],
+                    Mydata.id_[i],
+                    Mydata.drawableArray[i]
+            ));
 
 
+
+        }
 
         return contactsModals;
     }
